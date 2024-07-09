@@ -56,14 +56,14 @@ const navItems: NavItems[] = [
 export default function Nav_Bar1() {
     const [animationParent] = useAutoAnimate()
     const [isSideOpen, setSideOpen] = useState(false)
-    
+
     function openSideMenu() {
         setSideOpen(true)
     }
     function closeSideMenu() {
         setSideOpen(false)
     }
-    
+
     return (
         <nav className="mx-auto flex items-center top-0 fixed z-20 w-full 
         justify-between px-7 lg:px-14 text-sm py-3 bg-white">
@@ -108,10 +108,10 @@ export default function Nav_Bar1() {
             {/* Right side navbar */}
 
             <section className='hidden lg:flex items-center gap-3'>
-                <button className="flex justify-center items-center gap-1 h-fit text-white transition-all px-4 py-2 rounded-full
+                <Link href='' className="flex justify-center items-center gap-1 h-fit text-white transition-all px-4 py-2 rounded-full
                     border-2 font-medium bg-[#082854] text-xs hover:bg-[#05162f]">
                     Get Report
-                </button>
+                </Link>
             </section>
             <CiMenuFries onClick={openSideMenu} className="cursor-pointer lg:hidden text-4xl" />
         </nav>
@@ -119,7 +119,7 @@ export default function Nav_Bar1() {
 }
 
 function MobileNav({ closeSideMenu }: { closeSideMenu: () => void }) {
-    const ref = useRef<HTMLDivElement>(null)    
+    const ref = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
         const handleWindowClick = (e: MouseEvent) => {
@@ -157,6 +157,12 @@ function MobileNav({ closeSideMenu }: { closeSideMenu: () => void }) {
                         />
                     )}
                 </div>
+                <div>
+                    <Link href='' className="flex mt-4 w-full justify-center items-center gap-1 h-fit text-white transition-all px-4 py-2 rounded-full
+                    border-2 font-medium bg-[#082854] text-xs hover:bg-[#05162f]">
+                        Get Report
+                    </Link>
+                </div>
             </motion.div>
         </div>
     )
@@ -165,7 +171,7 @@ function MobileNav({ closeSideMenu }: { closeSideMenu: () => void }) {
 function SingleNavLink({ label, icon, link, children, closeSideMenu }: NavItems & { closeSideMenu: () => void }) {
     const [animationParent] = useAutoAnimate()
     const [isOpen, setIsOpen] = useState(false)
-    
+
 
     function toggleOpen() {
         return setIsOpen(!isOpen)

@@ -31,9 +31,9 @@ const b2bPricing = () => {
                     <div className='flex items-center gap-3'><FaCheck /><p className='text-sm font-medium'>Simplify car evaluation process</p></div>
                     <div className='flex items-center gap-3'><FaCheck /><p className='text-sm font-medium'>Make your sales faster</p></div>
                 </div>
-                <div className='flex justify-center gap-4 items-center'>
-                    <button className='px-12 text-sm group transition-all duration-300 ease-in-out font-medium text-black py-3 bg-[#b6c5d1] hover:bg-[#cbccccb9] rounded-full'>Check pricing</button>
-                    <button onClick={moveToDiv} className='px-12 text-sm group transition-all duration-300 ease-in-out font-medium py-3 border border-white hover:bg-black hover:text-white rounded-full'>Get in touch</button>
+                <div className='flex justify-between w-full max-w-[400px] gap-4 items-center'>
+                    <button className='w-full text-sm group transition-all duration-300 ease-in-out font-medium text-black py-3 bg-[#b6c5d1] hover:bg-[#cbccccb9] rounded-full'>Check pricing</button>
+                    <button onClick={moveToDiv} className='w-full text-sm group transition-all duration-300 ease-in-out font-medium py-3 border border-white hover:bg-black hover:text-white rounded-full'>Get in touch</button>
                 </div>
             </div>
 

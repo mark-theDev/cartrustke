@@ -5,7 +5,7 @@ import { CiTimer } from "react-icons/ci";
 
 const CustomerSupportPage = () => {
     return (
-        <section className='flex flex-col h-[70vh] w-full items-center justify-between md:w-[90vw] mx-auto px-7 lg:px-[100px] md:my-20 py-14 md:rounded-2xl bg-[#b6c5d1]'>           
+        <section className='flex flex-col h-[70vh] w-full items-center justify-center md:w-[90vw] mx-auto px-7 lg:px-[100px] md:my-20 py-14 md:rounded-2xl bg-[#b6c5d1]'>           
             <div className='text-center pt-16 w-full'>
                 <h1 className='text-3xl font-bold'>Customer support is always here to help</h1>
                 <p className='text-base pt-7'>Our support team is happy to assist you whenever you have a question. Drop us a message and we will get back to you.</p>

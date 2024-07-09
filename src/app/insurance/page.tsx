@@ -23,9 +23,9 @@ const page = () => {
                     <div className='flex items-center gap-3'><FaCheck /><p className='text-sm font-medium'>Avoid insurance fraud</p></div>
                     <div className='flex items-center gap-3'><FaCheck /><p className='text-sm font-medium'>Use our API for easy integration, making your job easier</p></div>
                 </div>
-                <div className='flex justify-center gap-4 items-center'>
-                    <button className='px-12 text-sm group text-white transition-all duration-300 ease-in-out font-medium py-3 bg-[#082854] hover:bg-[#061d3d] rounded-full'>Get in touch</button>
-                    <button className='px-12 text-sm group transition-all duration-300 ease-in-out font-medium py-3 border border-black hover:bg-black hover:text-white rounded-full'>Learn more</button>
+                <div className='flex justify-between w-full max-w-[400px] gap-4 items-center'>
+                    <button className='w-full text-sm group text-white transition-all duration-300 ease-in-out font-medium py-3 bg-[#082854] hover:bg-[#061d3d] rounded-full'>Get in touch</button>
+                    <button className='w-full text-sm group transition-all duration-300 ease-in-out font-medium py-3 border border-black hover:bg-black hover:text-white rounded-full'>Learn more</button>
                 </div>
             </div>
             <div className='bg-[#082854] h-screen items-center py-10 px-7 lg:px-14 w-full grid grid-cols-1 md:grid-cols-2 gap-9'>

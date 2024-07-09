@@ -140,7 +140,7 @@ const ContactUS = () => {
                 </div>
             </div>
             <div>
-                <button onClick={handleOnSubmit} type='submit' className='rounded-full text-sm font-medium transform duration-300 text-white bg-[#082854] px-12 py-3 hover:bg-[#04152d]'>Get in touch</button>
+                <button onClick={handleOnSubmit} type='submit' className='rounded-full w-full sm:w-fit text-sm font-medium transform duration-300 text-white bg-[#082854] px-12 py-3 hover:bg-[#04152d]'>Get in touch</button>
             </div>
         </form>
     )

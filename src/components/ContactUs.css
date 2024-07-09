@@ -1,0 +1,60 @@
+.form-group{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: 0.3s ease-in-out;
+}
+
+.form-group label{
+    font-size: small;
+}
+
+.form-group input{
+    font-size: small;
+    outline: none;
+}
+
+.form-group input:focus{
+    outline: 1px solid black;
+}
+
+.form-title{
+    font-size: 1.9rem;
+    font-weight: bold;    
+    line-height: 2.5rem;    
+}
+
+.form-input{
+    border-radius: 5px;
+    border: 1px solid rgba(112, 128, 144, 0.708);
+    padding: 10px;
+    font-size: small;
+}
+
+.form-input:focus{
+    outline: 1px solid black;
+}
+
+.form-check div{
+    display: flex;    
+    gap: 10px; 
+        
+}
+
+.form-check label{
+    font-size: small;
+}
+
+.check-btn{
+   width: 20px;
+   height: 20px;   
+}
+
+.p-error{
+    color: red;
+    font-size: small;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+

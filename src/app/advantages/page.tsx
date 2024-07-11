@@ -5,13 +5,13 @@ import LandingPage4 from '../../components/LandingPage4'
 const advantagePage = () => {
   return (
     <section>
-        <div className='bg-[#fff] h-[60vh] lg:h-screen w-full mt-16 flex gap-8 justify-center items-center flex-col px-7 lg:px-14'>
+        <div className='bg-[#fff] h-[70vh] lg:h-screen w-full mt-16 flex gap-8 justify-center items-center flex-col px-7 lg:px-14'>
             <div className='text-center'>
                 <h1 className='text-3xl leading-[1.5] md:text-4xl mb-7 font-bold'>Why CARTRUST is better than the competition</h1>
-                <p className='text-sm lg:text-base font-light w-full mx-auto mt-3'>With more vehicle history services entering the market each year, CARTRUST presents a solution that will work for most. Whether you're buying a car, selling one, or running an automotive business, our service is for you.</p>
+                <p className='text-sm lg:text-base font-light w-full md:w-[70%] mx-auto mt-3'>With more vehicle history services entering the market each year, CARTRUST presents a solution that will work for most. Whether you're buying a car, selling one, or running an automotive business, our service is for you.</p>
             </div>            
-            <div className='flex justify-center items-center mx-auto w-[80vw] sm:w-[70vw] lg:max-w-[70%]'>
-                <img className='object-contain' src="./Advantages_Img.png" alt="" />
+            <div className='flex justify-center items-center mx-auto w-[80vw] sm:w-[60vw] '>
+                <img className='object-contain max-h-[300px]' src="./Advantages_Img.png" alt="" />
             </div>
         </div>
         <div className='grid grid-cols-1 px-7 lg:px-14 gap-10 bg-[#082854] py-20 w-full lg:grid-cols-2'>

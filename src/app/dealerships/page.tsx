@@ -43,21 +43,21 @@ const b2bPricing = () => {
                 <div className='grid grid-cols-1 mx-auto sm:grid-cols-2 lg:grid-cols-4 w-full  gap-6'>
                     <div className='flex border border-gray-300 items-center rounded-2xl flex-col gap-4 justify-between p-6 shadow-md'>
                         <h1 className='text-lg font-medium'>10 reports</h1>
-                        <p className='text-2xl font-bold'>$9.90 <br /> <span className='text-sm'>/report</span></p>
-                        <p className='text-base text-gray-500'>Save 67%</p>
-                        <Link href='' className='w-full rounded-full py-2 text-sm font-medium text-white text-center bg-[#082854]'>Buy for $99</Link>
+                        <p className='text-2xl font-bold'>Ksh268 <br /> <span className='text-sm'>/report</span></p>
+                        <p className='text-base text-gray-500'>Save 33%</p>
+                        <Link href='' className='w-full rounded-full py-2 text-sm font-medium text-white text-center bg-[#082854]'>Buy for Ksh2,680</Link>
                     </div>
                     <div className='flex border border-gray-300 items-center rounded-2xl flex-col gap-4 justify-between p-6 shadow-md'>
                         <h1 className='text-lg font-medium'>30 reports</h1>
-                        <div className='block text-center'><p className='text-2xl font-bold'>$9.39</p><p className='text-sm'>/ report</p></div>
-                        <p className='text-base text-gray-500'>Save 69%</p>
-                        <Link href='' className='w-full rounded-full py-2 text-sm font-medium text-white text-center bg-[#082854]'>Buy for $281.70</Link>
+                        <div className='block text-center'><p className='text-2xl font-bold'>ksh240</p><p className='text-sm'>/ report</p></div>
+                        <p className='text-base text-gray-500'>Save 40%</p>
+                        <Link href='' className='w-full rounded-full py-2 text-sm font-medium text-white text-center bg-[#082854]'>Buy for Ksh7,200</Link>
                     </div>
                     <div className='flex border border-gray-300 items-center rounded-lg flex-col gap-4 justify-between p-6 shadow-md'>
                         <h1 className='text-lg font-medium'>100 reports</h1>
-                        <p className='text-2xl font-bold'>$8.79 <br /> <span className='text-sm'>/ report</span></p>
-                        <p className='text-base text-gray-500'>Save 71%</p>
-                        <Link href='' className='rounded-full w-full text-center py-2 text-sm font-medium text-white bg-[#082854]'>Buy for $879.00</Link>
+                        <p className='text-2xl font-bold'>Ksh196 <br /> <span className='text-sm'>/ report</span></p>
+                        <p className='text-base text-gray-500'>Save 51%</p>
+                        <Link href='' className='rounded-full w-full text-center py-2 text-sm font-medium text-white bg-[#082854]'>Buy for ksh19,600</Link>
                     </div>
                     <div className='flex text-white items-center bg-[#082854] gap-4 rounded-lg flex-col justify-between p-6 shadow-md'>
                         <h1 className='text-lg font-medium'><FaCirclePlus /></h1>

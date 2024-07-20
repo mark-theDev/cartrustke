@@ -1,5 +1,4 @@
 import React from 'react'
-import CarInfo from '../../components/CarInfo'
 import LandingPage4 from '../../components/LandingPage4'
 
 const advantagePage = () => {

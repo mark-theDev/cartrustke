@@ -51,8 +51,8 @@ const page = () => {
                             {card.discount && (
                                 <p className='px-2 bg-[#697883] font-medium rounded w-fit'>{card.discount}</p>
                             )}
-                            <h2 className='text-lg font-bold'>{card.price}</h2>
-                            <p className='text-sm'>{card.total}</p>
+                            <h2 className='text-2xl font-bold'>{card.price}</h2>
+                            <p className='text-base font-light'>{card.total}</p>
                             <div>
                                 <input type="checkbox"
                                     name='pricePackage'
@@ -206,22 +206,22 @@ const page = () => {
 const priceCards = [
     {
         title: "Check 2 cars",
-        discount: "-40%",
-        price: "$17.99/ report",
-        total: "You pay $35.98 $59.98",
+        discount: "10%",
+        price: "Ksh360/ report",
+        total: "You pay Ksh720",
         popular: true,
     },
     {
         title: "Check 3 cars",
-        discount: "-47%",
-        price: "$15.99/ report",
-        total: "You pay $47.97",
+        discount: "25%",
+        price: "Ksh300/ report",
+        total: "You pay Ksh900",
         popular: false,
     },
     {
         title: "Check 1 car",
         discount: null,
-        price: "$29.99/ report",
+        price: "Ksh400/ report",
         total: "Full price",
         popular: false,
     },

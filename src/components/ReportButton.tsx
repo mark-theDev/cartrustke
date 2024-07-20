@@ -1,7 +1,5 @@
 import React from 'react'
 import VinForm from './VinForm'
-import { FaArrowRight } from "react-icons/fa";
-import Link from 'next/link';
 
 const ReportButton = () => {
   return (

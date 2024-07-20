@@ -39,7 +39,7 @@ const Footer = () => {
         </div>
         <div className="flex flex-col items-start h-full gap-3">
           <h1 className='text-xl font-bold'>Contact Us</h1>
-          <p className='text-sm font-light'>Westlands, Nairobi, Mirage</p>
+          <p className='text-sm font-light'>Westlands, Nairobi, Mirage Towers</p>
           <div>
             <Link href='' className='flex mb-2 gap-3'><IoIosCall className="" /><span className='text-sm hover:underline'>0722123456</span></Link>
             <Link href='' className='flex gap-3'><MdEmail className="" /> <span className='text-sm hover:underline'>cartrustke@gmail.com</span></Link>

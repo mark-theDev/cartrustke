@@ -7,9 +7,9 @@ export default function VinForm() {
       <FormInput
         type="text"
         placeholder="Enter Car Registration"
-        className="py-3 px-4 text-lg text-black rounded-lg outline-none w-full"        
+        className="py-3 px-4 text-sm text-black rounded-lg outline-none w-full"        
       />
-    </div>
+    </div> 
   )
 }
 

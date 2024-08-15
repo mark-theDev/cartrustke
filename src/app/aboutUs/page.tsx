@@ -37,7 +37,7 @@ const aboutUs = () => {
                 <BsEnvelopeAtFill className='text-4xl' />
                 <h1 className='text-4xl mb-6 font-bold'>Contact Us</h1>
                 <p className='text-sm font-light'>Have a question, or want to offer a perspective? Reach us by email here.</p>
-                <Link className='bg-[#b6c5d1] text-black w-fit text-sm font-bold rounded-full px-4 py-2' href=''>Email Us</Link>
+                <Link className='bg-[#b6c5d1] text-black text-xs w-fit font-bold rounded-full px-4 py-2' href='blogs'>Email Us</Link>
             </div>
         </section>
     )

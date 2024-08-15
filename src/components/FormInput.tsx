@@ -1,13 +1,15 @@
 import React from 'react'
+import { InputProps } from '@/types/input'
 
-type InputProps = {
-  type: string
-  placeholder?: string
-  className?: string
-}
 
 export const FormInput = (props: InputProps) => {
   return (
-    <input required className={props.className} type={props.type} placeholder={props.placeholder} />
+    <input      
+      onChange={props.onChange}
+      className={props.className}
+      type={props.type}
+      placeholder={props.placeholder} 
+      value={props.value}
+    />
   )
 }

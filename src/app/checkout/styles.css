@@ -1,0 +1,15 @@
+.heading1{
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.list li{
+    list-style: disc;
+    font-size: 14px;
+}

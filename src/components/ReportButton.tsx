@@ -25,7 +25,7 @@ const ReportButton = () => {
       setErrors('Enter valid car registration number')
       return
     }
-    router.push(`report-page?regNumber=${encodeURIComponent(regNumber)}`)
+    router.push(`/checkout/pre-check?regNumber=${encodeURIComponent(regNumber)}`)
   }
 
 

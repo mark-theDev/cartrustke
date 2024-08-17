@@ -66,7 +66,7 @@ const LandingPage1 = () => {
     }
 
     return (
-        <section className='bg-white py-[60px] grid grid-cols-1 justify-between gap-5 h-full w-full px-8'>
+        <section className='py-[60px] grid grid-cols-1 justify-between gap-5 h-full w-full px-8'>
             <div className='text-center'>
                 <h1 className='text-3xl lg:text-4xl font-bold'>Choose Wisely </h1>
                 <p className='text-lg font-normal pt-4'>Make sure your new car is a trustworthy companion</p>

@@ -82,14 +82,11 @@ const report_page = () => {
 
         // console.log(`Name: ${name}, Email: ${email}, Phone: ${phone}, Car Details: ${regNumber}, NTSA: ${ntsaStatus}, Owner Number: ${userNumber}`)
         setName(''); setEmail(''); setPhone(''); setRegNumber('')
-    }
-
-    
+    }  
 
     
     return (
         <div className='min-h-screen h-full py-[100px] relative px-14 bg-[#082854] mt-[70px] w-full flex flex-col justify-center items-center'>
-
             <div className='grid w-full relativemt-10 md:w-[80vw] lg:w-[70vw] grid-cols-1 rounded-lg md:grid-cols-2'>
                 <div className='hidden relative md:flex justify-center items-center h-full w-full'>
                     <div className='text-white px-2 w-full text-center relative z-10'>

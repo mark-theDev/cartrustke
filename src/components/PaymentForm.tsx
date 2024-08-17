@@ -22,7 +22,8 @@ interface FormProps {
 const formSchema = z.object({
     name: z.string().min(2, {
         message: "Name must be at least 2 characters.",
-    }),
+    })
+    ,
     phoneNumber: z.string().min(10, {
         message: "Phone number must be at least 10 digits"
     }).max(15, {
@@ -32,7 +33,7 @@ const formSchema = z.object({
     })
 })
 
-const PaymentForm: React.FC<FormProps> = ({ name }) => {
+const PaymentForm= () => {
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),

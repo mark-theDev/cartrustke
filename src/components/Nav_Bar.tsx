@@ -159,7 +159,7 @@ function MobileNav({ closeSideMenu }: { closeSideMenu: () => void }) {
                 </div>
                 <div>
                     <Link href='' className="flex mt-4 w-full justify-center items-center gap-1 h-fit text-white transition-all px-4 py-2 rounded-full
-                    border-2 font-medium bg-[#082854] text-xs hover:bg-[#05162f]">
+                        border-2 font-medium bg-[#082854] text-xs hover:bg-[#05162f]">
                         Get Report
                     </Link>
                 </div>

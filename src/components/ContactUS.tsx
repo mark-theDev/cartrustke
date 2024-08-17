@@ -3,10 +3,11 @@ import "./ContactUs.css"
 import Link from 'next/link'
 import Validation, { ValidationErrors, FormValues } from './Validation'
 import { HiOutlineExclamation } from "react-icons/hi";
+import axios from 'axios';
 
 const ContactUS = () => {
 
-    const [value, setValue] = useState <FormValues>({
+    const [value, setValue] = useState<FormValues>({
         fullName: "",
         email: "",
         companyName: "",
@@ -16,17 +17,49 @@ const ContactUS = () => {
     })
 
     const [errors, setErrors] = useState<ValidationErrors>({})
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [submitted, setSubmitted] = useState(false)
 
-    const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+
+
+    const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const validationErrors = Validation(value)
-        setErrors(validationErrors) 
+        setErrors(validationErrors)
+
+        if (Object.keys(validationErrors).length === 0) {
+            setIsSubmitting(true);
+            console.log(value)
+            try {
+                const response = await axios.post('http://localhost:3001/submit-form', value)
+                console.log(value)
+                if (response.status === 200) {
+                    setSubmitted(true)                  
+
+                    setValue({
+                        fullName: "",
+                        email: "",
+                        companyName: "",
+                        textArea: "",
+                        privacyPolicy: false,
+                        newsletter: false
+                    })
+                }
+            }
+            catch(error) {
+                console.log("Something went wrong submitting the form")                
+            }
+            finally{
+                setIsSubmitting(false)
+            }
+        }
     }
 
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value, type, checked } = e.target
+        const { name, value, type } = e.target
 
-        if (type === 'checkbox') {
+        if (type === 'checkbox' && e.target instanceof HTMLInputElement) {
+            const { checked } = e.target
             setValue(prevVal =>
             ({
                 ...prevVal,
@@ -44,14 +77,14 @@ const ContactUS = () => {
     }
 
     return (
-        <form className='w-full h-full flex justify-center flex-col gap-10'>
+        <form onSubmit={handleOnSubmit} className='w-full h-full flex justify-center flex-col gap-10'>
             <div className='form-title w-full md:w-[50%]'>
                 <h1 className=' '>Get in touch with us to arrrage a consultation</h1>
             </div>
             <div className='grid grid-col-1 md:grid-cols-2 gap-5'>
                 <div className='grid grid-col-1 sm:grid-cols-2 gap-5'>
                     <div className='form-group'>
-                        <label htmlFor="userName"><span>* </span>First and last name</label>
+                        <label htmlFor="userName"><span className='text-red-600'>* </span>First and last name</label>
                         <input
                             value={value.fullName}
                             type="text"
@@ -64,7 +97,7 @@ const ContactUS = () => {
                         {errors.fullName && <p className='p-error'><HiOutlineExclamation className='text-lg' />{errors.fullName}</p>}
                     </div>
                     <div className='form-group'>
-                        <label htmlFor="userEmail"><span>* </span>Email</label>
+                        <label htmlFor="userEmail"><span className='text-red-600'>* </span>Email</label>
                         <input
                             value={value.email}
                             type="email"
@@ -77,7 +110,7 @@ const ContactUS = () => {
                         {errors.email && <p className='p-error'><HiOutlineExclamation className='text-lg' />{errors.email}</p>}
                     </div>
                     <div className='form-group'>
-                        <label htmlFor="companyName"><span>* </span>Company Name</label>
+                        <label htmlFor="companyName"><span className='text-red-600'>* </span>Company Name</label>
                         <input
                             value={value.companyName}
                             type="text"
@@ -100,7 +133,7 @@ const ContactUS = () => {
                     </div>
                 </div>
                 <div className='flex flex-col gap-2'>
-                    <label className='text-sm' htmlFor="textArea"><span>* </span>Type your message here</label>
+                    <label className='text-sm' htmlFor="textArea"><span className='text-red-600'>* </span>Type your message here</label>
                     <textarea
                         value={value.textArea}
                         name="textArea"
@@ -140,7 +173,7 @@ const ContactUS = () => {
                 </div>
             </div>
             <div>
-                <button onClick={handleOnSubmit} type='submit' className='rounded-full w-full sm:w-fit text-sm font-medium transform duration-300 text-white bg-[#082854] px-12 py-3 hover:bg-[#04152d]'>Get in touch</button>
+                <button type='submit' className='rounded-full w-full sm:w-fit text-sm font-medium transform duration-300 text-white bg-[#082854] px-12 py-3 hover:bg-[#04152d]'>Get in touch</button>
             </div>
         </form>
     )

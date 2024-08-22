@@ -26,7 +26,7 @@ const preCheckPage = () => {
 
 
     return (
-        <div className='bg-[#e1e1e1] min-h-screen w-full'>
+        <div className='bg-[#e1e1e1] min-h-screen pt-[20px] w-full'>
             <div className='flex gap-8 px-7 md:px-14 pt-8'>
                 <div className='flex flex-col justify-center gap-3'>
                     <p className='text-sm font-medium'>Success! We've detected this vehicle and its previous data records.</p>
@@ -44,8 +44,7 @@ const preCheckPage = () => {
                 </div>
             </div>
             <div className='w-full h-full py-[80px]'>
-                <PaymentOptionsForm regNumber={regNumber} />
-                
+                <PaymentOptionsForm regNumber={regNumber} />                
             </div>
             <div className='text-black flex flex-col items-center px-7 pb-[80px] md:px-14'>
                 <h2 className='text-3xl w-full lg:max-w-[60vw] font-bold mb-5'>Our data comes from verifible sources</h2>
@@ -63,7 +62,7 @@ const preCheckPage = () => {
             <div className='w-full bg-white px-7 md:px-14'>
                 <LandingPage1 />
             </div>
-            <div className='w-full bg-white py-[100px]'>
+            <div className='w-full bg-[#e1e1e1] py-[100px]'>
                 <h2 className='text-3xl font-bold text-center mb-9'>Frequently Asked Questions</h2>
                 {faqContent.map(entry => (
                     <FaqAccordion title={entry.qst} description={entry.ans} value={entry.id}/>
@@ -77,7 +76,7 @@ export default preCheckPage
 
 const PaymentOptionsForm: React.FC<PaymentOptionsFormProps> = ({ regNumber }) => {
 
-    const [selectedOption, setSelectedOption] = useState('1')
+    const [selectedOption, setSelectedOption] = useState('3')
     const router = useRouter()
 
     const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -96,9 +95,6 @@ const PaymentOptionsForm: React.FC<PaymentOptionsFormProps> = ({ regNumber }) =>
 
             router.push(`/checkout/recepient-details?reports=${selectedOption}&regNumber=${encodeURIComponent(regNumber)}&price=${price}`)
         }
-
-
-
     }
     return (
         <div>
@@ -109,8 +105,13 @@ const PaymentOptionsForm: React.FC<PaymentOptionsFormProps> = ({ regNumber }) =>
                             <label
                                 key={index}
                                 htmlFor={`plan-${item.id}`}
-                                className={`max-w-xs bg-white h-[300px] px-4 py-8 flex flex-col cursor-pointer border-2 rounded-lg shadow-md ${selectedOption === item.id ? 'border-2 border-[#082854]' : ''}`}
+                                className={`max-w-xs relative bg-white h-[300px] px-4 py-8 flex flex-col cursor-pointer border-2 rounded-lg shadow-md ${selectedOption === item.id ? 'border-2 border-[#082854]' : ''}`}
                             >
+                                {(item.id === '1' || item.id === '2') && <div className='absolute inset-0 rounded-lg bg-white/90'/>}
+                                {(item.id === '1' || item.id === '2') && 
+                                <div className='absolute z- inset-0 flex justify-center items-center'>
+                                    <h3 className='text-[18px] font-bold'>This plan is coming soon!</h3>
+                                </div>}
                                 <div className='flex items-center justify-between mb-12'>
                                     <input
                                         id={`plan-${item.id}`}
@@ -118,6 +119,7 @@ const PaymentOptionsForm: React.FC<PaymentOptionsFormProps> = ({ regNumber }) =>
                                         value={item.id}
                                         checked={selectedOption === item.id}
                                         onChange={handleOptionChange}
+                                        disabled={item.id === '1' || item.id === '2'}
                                         className="mr-2"
                                         style={{ width: '35px', height: '35px', accentColor: '#082854', borderRadius: '10px' }}
                                     />
@@ -131,8 +133,8 @@ const PaymentOptionsForm: React.FC<PaymentOptionsFormProps> = ({ regNumber }) =>
                         ))
                     }
                 </div>
-                <button type="submit" className="mt-[80px] w-fit bg-[#082854] text-sm text-white px-8 font-bold py-2 rounded-full">Get Report</button>
-                <img src="/mpesa_logo.png" className='w-[80px] mt-5 text-center' alt="" />
+                <button type="submit" className="mt-[40px] w-fit bg-[#082854] text-sm text-white px-8 font-medium py-2 rounded-full">Get Report</button>
+                <img src="/mpesa_logo.png" className='w-[80px] mt-3 text-center' alt="" />
             </form>
         </div>
     )

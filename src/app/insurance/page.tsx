@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useRef } from 'react'
 import { FaCheck } from "react-icons/fa";
 import { IoStar } from "react-icons/io5";
 import Faq from '../../components/Faq';
@@ -9,13 +9,23 @@ import ContactUS from '../../components/ContactUS';
 const page = () => {
 
     const [openIndex, setOpenIndex] = useState<null | number>(null)
+    const contactRef = useRef<HTMLDivElement>(null)
+    const faqRef = useRef<HTMLDivElement>(null)
+
+    const moveToDiv = () => {
+        contactRef.current ? contactRef.current.scrollIntoView({behavior: 'smooth'}): ''
+    }
+
+    function scrollIntoView () {
+        faqRef.current?.scrollIntoView({behavior: 'smooth'})
+    }
 
     const handleOpen = (index: number) => {
         setOpenIndex(prev => prev === index ? null : index)
     }
     return (
         <section className='w-full h-full'>
-            <div className='h-screen text-center w-full px-7 lg:px-14 pt-[5rem] bg-[#ffffff] flex flex-col justify-center gap-7 items-center'>
+            <div className='h-screen text-center w-full px-7 lg:px-14 bg-[#ffffff] flex flex-col justify-center gap-7 items-center'>
                 <h1 className='text-3xl md:text-4xl lg:text-5xl font-bold'>Avoid fraud and manage risk in your insurance business</h1>
                 <p className='text-lg font-light w-[90%] sm:w-[60%]'>Vehicle history data is a quick and easy way to determine the real value of a car and minimize risk:</p>
                 <div className='flex flex-col gap-4'>
@@ -24,8 +34,8 @@ const page = () => {
                     <div className='flex items-center gap-3'><FaCheck /><p className='text-sm font-medium'>Use our API for easy integration, making your job easier</p></div>
                 </div>
                 <div className='flex justify-between w-full max-w-[400px] gap-4 items-center'>
-                    <button className='w-full text-sm group text-white transition-all duration-300 ease-in-out font-medium py-3 bg-[#082854] hover:bg-[#061d3d] rounded-full'>Get in touch</button>
-                    <button className='w-full text-sm group transition-all duration-300 ease-in-out font-medium py-3 border border-black hover:bg-black hover:text-white rounded-full'>Learn more</button>
+                    <button onClick={moveToDiv} className='w-full text-sm group text-white transition-all duration-300 ease-in-out font-medium py-3 bg-[#082854] hover:bg-[#061d3d] rounded-full'>Get in touch</button>
+                    <button onClick={scrollIntoView} className='w-full text-sm group transition-all duration-300 ease-in-out font-medium py-3 border border-black hover:bg-black hover:text-white rounded-full'>Learn more</button>
                 </div>
             </div>
             <div className='bg-[#082854] h-screen items-center py-10 px-7 lg:px-14 w-full grid grid-cols-1 md:grid-cols-2 gap-9'>
@@ -89,11 +99,11 @@ const page = () => {
                 </div>
             </div>
 
-            <div className='bg-[#e6e4e4] px-7 lg:px-14 py-16'>
+            <div ref={contactRef} className='bg-[#e6e4e4] px-7 lg:px-14 py-16'>
                 <ContactUS />
             </div>
 
-            <div className='flex flex-col min-h-[70vh] items-left w-full mx-auto md:w-[70vw] px-7 lg:px-14 justify-center'>
+            <div ref={faqRef} className='flex flex-col min-h-[70vh] items-left w-full mx-auto md:w-[70vw] px-7 lg:px-14 justify-center'>
                 <h1 className='text-3xl sm:text-4xl pb-8 font-bold'>Frequently Asked Questions</h1>
                 {facts.map((entry, index) => (
                     <div key={index}>

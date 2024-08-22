@@ -89,8 +89,7 @@ const ContactUS = () => {
                             value={value.fullName}
                             type="text"
                             name='fullName'
-                            id='userName'
-                            required
+                            id='userName'                            
                             className='form-input'
                             onChange={handleOnChange}
                         />
@@ -104,8 +103,7 @@ const ContactUS = () => {
                             name='email'
                             id='userEmail'
                             className='form-input'
-                            onChange={handleOnChange}
-                            required
+                            onChange={handleOnChange}                            
                         />
                         {errors.email && <p className='p-error'><HiOutlineExclamation className='text-lg' />{errors.email}</p>}
                     </div>
@@ -117,8 +115,7 @@ const ContactUS = () => {
                             name='companyName'
                             id='companyName'
                             className='form-input'
-                            onChange={handleOnChange}
-                            required
+                            onChange={handleOnChange}                            
                         />
                         {errors.companyName && <p className='p-error'><HiOutlineExclamation className='text-lg' />{errors.companyName}</p>}
                     </div>
@@ -138,8 +135,7 @@ const ContactUS = () => {
                         value={value.textArea}
                         name="textArea"
                         id="textArea"
-                        className='form-input h-full'
-                        required
+                        className='form-input h-full'                        
                         onChange={handleOnChange}
                     >
                     </textarea>
@@ -154,8 +150,7 @@ const ContactUS = () => {
                         id='privacyPolicy'
                         className='check-btn'
                         checked={value.privacyPolicy}
-                        onChange={handleOnChange}
-                        required
+                        onChange={handleOnChange}                        
                     />
                     <label htmlFor="privacyPolicy">I have read, understand and accept the content of the <Link className='text-[#0073f0] hover:text-black transition duration-300 underline font-semibold' href='/'>Privacy Policy</Link> and consent to the processing of my data as part of this application.</label>
                 </div>
@@ -166,8 +161,7 @@ const ContactUS = () => {
                         id='newsletter'
                         className='check-btn'
                         checked={value.newsletter}
-                        onChange={handleOnChange}
-                        required
+                        onChange={handleOnChange}                        
                     />
                     <label htmlFor="newsletter">Join our newsletter! We'll keep you updated with exciting news, useful content and promotions</label>
                 </div>

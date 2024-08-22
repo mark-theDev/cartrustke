@@ -9,17 +9,17 @@ type SlideImages = {
 }
 const slides = [
     {
-        url: "/assets/LandingPage1/LC200.png",
+        url: "/inspection-icon.png",
         title: 'Avoid expensive mistakes',
         paragraph: 'Learn the history of any car, to ensure you are not getting a bad deal'
     },
     {
-        url: "/assets/LandingPage1/Subaru.png",
+        url: "/reporting-icon.png",
         title: 'Save precious time',
         paragraph: 'Test drives takes hours, so filter out the noise before you drive'
     },
     {
-        url: "/assets/LandingPage1/Benz.png",
+        url: "/approved-icon.png",
         title: 'Negotiate a better deal',
         paragraph: 'Once you\'ve identified your next car, we\'ll have the facts to get the price down'
     }
@@ -98,7 +98,7 @@ const LandingPage1 = () => {
                                 key={index}
                                 className={`flex flex-col gap-2 justify-center items-center w-full text-center ${currentIndex !== index ? 'hidden' : ""}`}
                             >
-                                <img src={slide.url} alt={slide.title} className='max-h-[200px] mb-6 cursor-grab active:cursor-grabbing object-contain' />
+                                <img src={slide.url} alt={slide.title} className='max-w-[400px] mb-6 cursor-grab active:cursor-grabbing object-contain' />
                             </motion.div>
                         ))}
                         {slides.map((entry, index) => (
@@ -137,19 +137,19 @@ const LandingPage1 = () => {
                 </div>
             </div>
             <div className='hidden w-full h-fit lg:grid grid-cols-3 text-center gap-5 justify-between items-center'>
-                <div>
-                    <img src={slides[0].url} alt="" className='object-cover' />
-                    <h1 className='text-xl mb-2 font-bold'>{slides[0].title}</h1>
+                <div className='flex gap-3 pt-[63px] flex-col'>
+                    <img src={slides[0].url} alt="" className='object-cover max-h-[160px]' />
+                    <h1 className='text-xl font-bold'>{slides[0].title}</h1>
                     <p className='text-base font-medium'>{slides[0].paragraph}</p>
                 </div>
                 <div>
-                    <img src={slides[1].url} alt="" className='object-cover' />
-                    <h1 className='text-xl mb-2 font-bold'>{slides[1].title}</h1>
+                    <img src={slides[1].url} alt="" className='object-contain max-h-[200px]' />
+                    <h1 className='text-xl pt-5 font-bold'>{slides[1].title}</h1>
                     <p className='text-base font-medium'>{slides[1].paragraph}</p>
                 </div>
                 <div>
-                    <img src={slides[2].url} alt="" className='object-cover' />
-                    <h1 className='text-xl mb-2 font-bold'>{slides[2].title}</h1>
+                    <img src={slides[2].url} alt="" className='object-cover max-h-[180px]' />
+                    <h1 className='text-xl pt-5 font-bold'>{slides[2].title}</h1>
                     <p className='text-base font-medium'>{slides[2].paragraph}</p>
                 </div>
             </div>

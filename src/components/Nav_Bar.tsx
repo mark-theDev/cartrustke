@@ -17,8 +17,7 @@ type NavItems = {
 
 const navItems: NavItems[] = [
     {
-        label: "Reports",
-        link: '/',
+        label: "Reports",        
         children: [
             { label: "Sample Report", link: "/sample_report", icon: "/report.svg" },
             { label: "Pricing", link: "/pricing", icon: "/price.svg" },
@@ -27,16 +26,14 @@ const navItems: NavItems[] = [
         ]
     },
     {
-        label: "Resources",
-        link: "/",
+        label: "Resources",        
         children: [
             { label: "Blog" },
             { label: "Help" }
         ]
     },
     {
-        label: "For Business",
-        link: "/",
+        label: "For Business",        
         children: [
             { label: "Dealerships", link: "/dealerships" },
             { label: "Insurance Companies", link: "/insurance" },
@@ -44,8 +41,7 @@ const navItems: NavItems[] = [
         ]
     },
     {
-        label: "Company",
-        link: "/",
+        label: "Company",        
         children: [
             { label: "About Us", link: "/aboutUs" },
             { label: "Contacts", link: "/contacts" }
@@ -54,8 +50,10 @@ const navItems: NavItems[] = [
 ]
 
 export default function Nav_Bar1() {
+    
     const [animationParent] = useAutoAnimate()
     const [isSideOpen, setSideOpen] = useState(false)
+    
 
     function openSideMenu() {
         setSideOpen(true)
@@ -65,8 +63,8 @@ export default function Nav_Bar1() {
     }
 
     return (
-        <nav className="mx-auto flex items-center top-0 fixed z-20 w-full 
-        justify-between px-7 lg:px-14 text-sm py-3 bg-white">
+        <nav className="mx-auto flex items-center w-full z-10 fixed top-0 
+        justify-between px-7 lg:px-14 text-sm py-2 bg-white">
             {/* Logo */}
             <Link href='/'>
                 <img src="/CARTRUST-KE.png" alt="Cartrust logo" className="w-[200px]" />
@@ -77,20 +75,20 @@ export default function Nav_Bar1() {
                 {/* Nav Links */}
                 <div className="hidden lg:flex items-end gap-2 transition-all text-sm font-medium">
                     {navItems.map((d, i) =>
-                        <Link
-                            key={i}
-                            href={d.link ?? "/"}
-                            className={`relative group px-4 py-3 transition-all `}>
-                            <p className="flex justify-center font-medium transition-all items-center gap-2 text-black cursor-pointer 
-                                group-hover:text-sky-500">
+                        <div
+                            key={i}                            
+                            className={`relative group px-4 py-3 transition-all `}
+                        >
+                            <p className="flex justify-center font-semibold transition-all items-center gap-2 text-black cursor-pointer 
+                                group-hover:text-[#082854]">
                                 <span>{d.label}</span>
                                 <IoIosArrowDown className="rotate-180 transition-all group-hover:rotate-0" />
                             </p>
                             {/* sub links */}
                             {d.children &&
                                 <div
-                                    className="absolute px-2 right-[-20px] top-full py-3 hidden flex-col gap-1 w-full min-w-[200px] rounded-lg 
-                                        bg-white shadow-md transition-all duration-300 ease-in-out group-hover:flex">
+                                    className="absolute px-2 right-[-20px] z-10 top-full py-3 hidden flex-col gap-1 w-full min-w-[200px] rounded-lg 
+                                        bg-white shadow-md transition-all border duration-300 ease-in-out group-hover:flex">
                                     {d.children.map((child, index) =>
                                         <Link key={index} href={child.link ?? ""}
                                             className={`flex cursor-pointer px-4 rounded-lg items-center py-2 pr-8
@@ -100,7 +98,7 @@ export default function Nav_Bar1() {
                                             <span className="whitespace-nowrap pl-2 text-xs">{child.label}</span>
                                         </Link>)}
                                 </div>}
-                        </Link>
+                        </div>
                     )}
                 </div>
             </section>
@@ -108,12 +106,13 @@ export default function Nav_Bar1() {
             {/* Right side navbar */}
 
             <section className='hidden lg:flex items-center gap-3'>
-                <Link href='' className="flex justify-center items-center gap-1 h-fit text-white transition-all px-4 py-2 rounded-full
+                <Link href='/' className="flex justify-center items-center gap-1 h-fit text-white transition-all px-4 py-2 rounded-full
                     border-2 font-medium bg-[#082854] text-xs hover:bg-[#05162f]">
                     Get Report
                 </Link>
             </section>
             <CiMenuFries onClick={openSideMenu} className="cursor-pointer lg:hidden text-4xl" />
+           
         </nav>
     )
 }

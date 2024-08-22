@@ -4,6 +4,7 @@ import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import { motion } from 'framer-motion';
 import { FaCheck } from "react-icons/fa";
 import Faq from '../../components/Faq';
+import Link from 'next/link';
 
 const page = () => {
 
@@ -41,6 +42,11 @@ const page = () => {
                             className={`p-5 bg-white flex flex-col justify-between gap-3 relative border min-w-[300px] min-h-[250px] lg:w-1/3 h-full rounded-lg cursor-pointer ${isSelected === index ? 'border-blue-500 border' : 'border-gray-300'}`}
                             onClick={() => handleClick(index)}
                         >
+                            {(index === 0 || index === 1) && 
+                                <div className='absolute inset-0 flex items-center justify-center text-lg font-bold rounded-lg bg-white/90'>
+                                    Coming soon!
+                                </div>
+                            }
                             {card.popular && (
                                 <div className="bg-[#082854] absolute text-white font-bold p-3 rounded-t-lg"
                                     style={{ top: "-35px", left: "0", minWidth: "300px", width: '100%' }}>
@@ -63,12 +69,10 @@ const page = () => {
                         </div>
                     ))}
                 </div>
-                <div className='py-10 text-center'>
-                    <button className='bg-[#b6c5d1] mb-3 hover:bg-[#a2bbd0] text-sm font-medium max-w-[300px] w-full rounded-full px-4 py-2'>Get report</button>
+                <div className='py-10 w-full text-center'>
+                    <Link href={'/'} className='bg-[#082854] mb-3 max-w-[300px] hover:bg-[#0b3775] text-white transition-all duration-300 text-sm font-medium w-full rounded-full px-6 py-2'>Get report</Link>
                     <div className='flex items-center justify-center'>
-                        <img src='/visa.png' className='w-[30px]' alt='visa' />
-                        <img src='/mastercrd.png' className='w-[30px]' alt='mastercard' />
-                        <img src='/paypal.png' className='w-[20x] h-[15px]' alt='paypal' />
+                        <img src='/mpesa_logo.png' className='w-[60px]' alt='mpesa' />                        
                     </div>
                 </div>
 

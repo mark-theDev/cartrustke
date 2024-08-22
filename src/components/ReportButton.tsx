@@ -19,9 +19,11 @@ const ReportButton = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const regEx = /^K[A-D][A-HJ-NP-Z]{1}(?!000)\d{3}[A-HJ-NP-Z]$/
+    const regEx = /^K[A-C][A-EG-HJ-NP-Z]{1}(?!000)\d{3}[A-EG-HJ-NP-Z]$/
 
-    if(!regEx.test(regNumber)) {
+    const dRegEx = /^KD[A-EG-HJ-NP-Q](?!000)\d{3}[A-HJ-NP-Z]$/
+
+    if(!regEx.test(regNumber) && !dRegEx.test(regNumber)) {
       setErrors('Enter valid car registration number')
       return
     }

@@ -7,28 +7,17 @@ const FooterItems = () => {
     const listItems =[
         {
             label: 'Reports',
-            listItems: ['Advantages','Sample Report','Vin Decoder: Free VIN Number Lookup','Motorcycle VIN Lookup','Pricing','Help'],
+            listItems: ['Advantages','Sample Report','Vehicle Registration Number Lookup','Motorcycle Registration Lookup','Pricing','Help'],
             link: "/"
         },
         {
             label: 'Opportunities',
-            listItems: ['Affiliate Program','Influencers program', 'For Business'],
+            listItems: ['For Business'],
             link: "/"
         },
         {
             label: "Company",
-            listItems: ['About Us','Contacts','Blog','Press Area'],
-            link: "/"
-        },
-        {
-            label: 'Mobile Apps',
-            listItems: ['VIN Decoder for Android', 'VIN Decoder for iOS'],
-            link: "/"
-        },
-        {
-            label: "Decorders by Make",
-            listItems: ['Audi VIN Decoder','Chevrolet VIN Decoder','Dodge VIN Decoder','Ford VIN Decoder', 'Jeep VIN Decoder', 'Lexus VIN decoder',
-            'Mercedes-Benz VIN Decoder','Nissan VIN Decoder','RAM VIN Decoder','Toyota VIN Decoder', 'Volkswagen VIN Decoder'],
+            listItems: ['About Us','Contacts','Blog'],
             link: "/"
         }
     ]
@@ -45,15 +34,21 @@ const FooterItems = () => {
                     onClick={()=>toggleList(index)}>
                         {item.label}
                 </li>
-                {isOpen === index && (
-                <ul className="">
-                    {item.listItems.map((subList, subIndex) =>(
-                        <Link href={item.link}>
-                            <li className="font-light py-1 hover:text-gray-500/45 text-sm" key={subIndex}>{subList}</li>
-                        </Link>
-                    ))}   
-                </ul>
-                )}
+                <div className={`w-full overflow-hidden transition-all duration-500 ease-in-out
+                    ${isOpen === index ? 'max-h-screen': 'max-h-0'}`}>
+                    <ul className="mt-2">
+                        {item.listItems.map((subList, subIndex) => (
+                            <Link href={item.link}>
+                                <li 
+                                    className="font-light py-1 transition-all duration-300 hover:text-gray-500/45 text-sm" 
+                                    key={subIndex}
+                                >
+                                    {subList}
+                                </li>
+                            </Link>
+                        ))}
+                    </ul>
+                </div>                
             </div>
         ))}
     </div>

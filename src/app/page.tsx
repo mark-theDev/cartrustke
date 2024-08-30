@@ -6,6 +6,7 @@ import LandingPage4 from "../components/LandingPage4";
 import LandingPage5 from "../components/LandingPage5";
 import JoinUs from "../components/JoinUs";
 import CustomerSupportPage from "../components/CustomerSupportPage";
+import InformationChecks from "@/components/InformationChecks";
 
 
 
@@ -13,7 +14,8 @@ import CustomerSupportPage from "../components/CustomerSupportPage";
 export default function Home() {
   return (
     <div className="w-full bg-white">      
-      <HeroPage />      
+      <HeroPage />  
+      <InformationChecks />    
       <LandingPage1 />
       <LandingPage2 />
       <LandingPage3 /> 

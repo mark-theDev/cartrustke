@@ -17,6 +17,23 @@
     animation: shimmer 1.5s infinite;
 }
 
+.swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.swiper-slide {
+    max-width: 350px;
+    max-height: 350px;    
+}
+
+.swiper-slide img {    
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+
 @keyframes shimmer {
     0% {
         transform: translateX(-100%);

@@ -1,12 +1,16 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import '../styles.css'
-import { paymentPlan } from '@/constants/paymentPlan';
+import { PAYMENTPLAN } from '@/constants/paymentPlan';
 import { useRouter } from 'next/navigation';
 import { PaymentOptionsFormProps } from '@/types/paymentForm';
 import Link from 'next/link';
 import LandingPage1 from '@/components/LandingPage1';
 import FaqAccordion from '@/components/FaqShadCN';
+import { FaCheck } from "react-icons/fa6";
+import { HoverEffect, Card, CardTitle, CardDescription } from '@/components/ui/card-hover-effect';
+import CircleLoading from '@/components/CircleLoading';
+import Image from 'next/image';
 
 
 const preCheckPage = () => {
@@ -31,7 +35,7 @@ const preCheckPage = () => {
                 <div className='flex flex-col justify-center gap-3'>
                     <p className='text-sm font-medium'>Success! We've detected this vehicle and its previous data records.</p>
                     <h2 className='text-xl font-bold'>Car Registration</h2>
-                    {regNumber && (<h5 className='text-base px-4 py-1 font-medium w-fit h-fit text-white bg-[#082454]'>{regNumber}</h5>)}
+                    {regNumber && (<h5 className='text-base px-4 py-1 font-medium rounded w-fit h-fit text-white bg-[#082454]'>{regNumber}</h5>)}
                 </div>
                 <img src="/blue_line.png" className='max-h-[200px] w-1' alt="" />
                 <div className='flex flex-col justify-center gap-4'>
@@ -43,21 +47,19 @@ const preCheckPage = () => {
                     </ul>
                 </div>
             </div>
-            <div className='w-full h-full py-[80px]'>
-                <PaymentOptionsForm regNumber={regNumber} />                
+            <div className='w-full h-full pt-[60px] pb-[40px] px-7 md:px-20'>
+                <PaymentOptionsForm regNumber={regNumber} />
             </div>
             <div className='text-black flex flex-col items-center px-7 pb-[80px] md:px-14'>
                 <h2 className='text-3xl w-full lg:max-w-[60vw] font-bold mb-5'>Our data comes from verifible sources</h2>
-                <p className='text-base w-full lg:max-w-[60vw]'>
+                <p className='text-sm w-full lg:max-w-[60vw]'>
                     Our car history reports are based on data from various local
-                    databases belonging to NTSA, insurance companies,
-                    Kenya Police, official garages, and other institutions.
-                    Once we've gathered all the relevant information about a vehicle,
+                    databases. Once we've gathered all the relevant information about a vehicle,
                     we organize it and present it in an easy-to-understand format.
                     Each data request to all of our sources carries a cost,
                     which is why our reports aren't provided for free. If you believe
                     the generated report contains inaccuracies or mistakes or if you
-                    are unsatisfied with it, please contact our <Link className='underline transition-all duration-300 text-[#082854] hover:font-bold' href={''}>customer service</Link> .</p>
+                    are unsatisfied with it, please contact our <Link className='hover:underline transition-all duration-300 text-[#082854] font-medium' href={'/contactUs'}>customer service</Link> .</p>
             </div>
             <div className='w-full bg-white px-7 md:px-14'>
                 <LandingPage1 />
@@ -65,7 +67,7 @@ const preCheckPage = () => {
             <div className='w-full bg-[#e1e1e1] py-[100px]'>
                 <h2 className='text-3xl font-bold text-center mb-9'>Frequently Asked Questions</h2>
                 {faqContent.map(entry => (
-                    <FaqAccordion title={entry.qst} description={entry.ans} value={entry.id}/>
+                    <FaqAccordion title={entry.qst} description={entry.ans} value={entry.id} />
                 ))}
             </div>
         </div>
@@ -74,67 +76,94 @@ const preCheckPage = () => {
 
 export default preCheckPage
 
-const PaymentOptionsForm: React.FC<PaymentOptionsFormProps> = ({ regNumber }) => {
+export const PaymentOptionsForm: React.FC<PaymentOptionsFormProps> = ({ regNumber }) => {
 
-    const [selectedOption, setSelectedOption] = useState('3')
+    const [selectedOption, setSelectedOption] = useState('2')
+    const [submitting, setSubmitting] = useState(false)
     const router = useRouter()
 
-    const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSelectedOption(e.target.value)
+    const handleOptionChange = (id: string) => {
+        setSelectedOption(id)
     }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        const selectedPlan = paymentPlan.find(entry => entry.id === selectedOption)
+        const selectedPlan = PAYMENTPLAN.find(entry => entry.id === selectedOption)
+
+        setSubmitting(true)
 
         if (selectedPlan) {
             const { price } = selectedPlan
 
             console.log('Reg number and selected and price:', selectedOption, regNumber, price)
 
-            router.push(`/checkout/recepient-details?reports=${selectedOption}&regNumber=${encodeURIComponent(regNumber)}&price=${price}`)
+
+            setTimeout(() => {
+                router.push(`/checkout/recepient-details?reports=${selectedOption}&regNumber=${encodeURIComponent(regNumber)}&price=${price}`)
+                setSubmitting(false)
+            }, 3000);
         }
     }
     return (
         <div>
-            <form onSubmit={handleSubmit} className="flex flex-col items-center p-4">
-                <div className='grid justify-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
+            <form onSubmit={handleSubmit} className="flex flex-col w-full items-center p-4">
+                <div className='grid justify-center gap-5 grid-cols-1 w-full sm:grid-cols-2 lg:grid-cols-3'>
                     {
-                        paymentPlan.map((item, index) => (
-                            <label
+                        PAYMENTPLAN.map((item, index) => (
+                            <div
                                 key={index}
-                                htmlFor={`plan-${item.id}`}
-                                className={`max-w-xs relative bg-white h-[300px] px-4 py-8 flex flex-col cursor-pointer border-2 rounded-lg shadow-md ${selectedOption === item.id ? 'border-2 border-[#082854]' : ''}`}
+                                onClick={() => handleOptionChange(item.id)}
+                                className={`max-w-[300px] hover:shadow-lg transition-all duration-300 relative justify-between px-4 pt-4 pb-2 flex flex-col cursor-pointer border-2 rounded-lg
+                                    ${selectedOption === item.id ? 'border-2 border-[#082854]' : ''}
+                                     ${(item.id === '1' || item.id === '2') ? 'bg-white' : 'bg-[#082854] text-white scale-[1.05]'}`}
+
                             >
-                                {(item.id === '1' || item.id === '2') && <div className='absolute inset-0 rounded-lg bg-white/90'/>}
-                                {(item.id === '1' || item.id === '2') && 
-                                <div className='absolute z- inset-0 flex justify-center items-center'>
-                                    <h3 className='text-[18px] font-bold'>This plan is coming soon!</h3>
-                                </div>}
-                                <div className='flex items-center justify-between mb-12'>
-                                    <input
-                                        id={`plan-${item.id}`}
-                                        type="checkbox"
-                                        value={item.id}
-                                        checked={selectedOption === item.id}
-                                        onChange={handleOptionChange}
-                                        disabled={item.id === '1' || item.id === '2'}
-                                        className="mr-2"
-                                        style={{ width: '35px', height: '35px', accentColor: '#082854', borderRadius: '10px' }}
-                                    />
-                                    <p className='flex flex-col text-base font-bold'>{item.plan} <span className='text-xs font-normal'>{item.planDetails}</span></p>
+                                <div className={`flex justify-between w-full items-center mb-3`}>
+                                    <p className={`font-bold text-xl ${item.id === '3' ? 'text-[#fbb000]' : ''}`}>{item.plan}</p>
+                                    {item.id === '3' &&
+                                        <Image src={'/most-popular.png'} width={80} height={80} alt='popular' />}
                                 </div>
-                                <h2 className='font-medium text-lg mb-4'>Ksh{item.price} <span className='text-base font-light'>/report</span></h2>
-                                {item.discountedPrice && (<h5 className='text-base font-medium mb-4'>You pay <span className='text-lg underline font-bold'>Ksh{item.discountedPrice}</span> <span className='text-xs text-red-600 line-through'>Ksh{item.originalPrice}</span></h5>)}
-                                {index === 2 && (<p className='text-base font-medium mb-4'>Full Price</p>)}
-                                <h4 className='text-sm font-bold p-2 bg-[#082854] rounded-md text-white w-fit'>{item.discount}</h4>
-                            </label>
+                                <p className={`text-xs ${item.id === '3' ? 'text-gray-400' : 'text-gray-700'}`}>{item.sellingPoint}</p>
+                                <h2 className='font-bold text-3xl relative ml-8 mt-5 mb-3'>
+                                    <span className='absolute -top-3 -left-6 text-[10px]'>Ksh</span>
+                                    {item.price}
+                                    <span className='text-[14px] ml-2 text-gray-500'>/report</span></h2>
+                                <ul className='flex border-t border-gray-200 pt-4 flex-col gap-2 items-start h-full'>
+                                    {item.planDetails.map((list) => (
+                                        <li key={index} className='flex text-xs items-center gap-3'>
+                                            <span
+                                                className={`p-[2px] rounded-full ${item.id === '3' ?
+                                                    'bg-[#fbb000] text-white' : 'bg-[#082854] text-white'}`}>
+                                                <FaCheck className='text-[8px]' />
+                                            </span>
+                                            <span className='text-xs'>{list}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <button
+                                    type="submit"
+                                    className={`mt-[40px] w-full text-sm text-white px-8 font-medium 
+                                    py-2 rounded-lg hover:-translate-y-1 transform transition duration-200 
+                                    ${item.id === '3' ? 'bg-[#fbb000]' : 'bg-[#082854]'}`}
+                                    disabled={submitting}
+                                >
+                                    Choose
+                                </button>
+                                {selectedOption === item.id ?
+                                    (<div className={`absolute inset-0 bg-white/80 flex items-center transition-all duration-300 ease-in-out
+                                                justify-center gap-2 text-center ${submitting ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}>
+                                        <CircleLoading />
+                                    </div>) : ''
+                                }
+                            </div>
                         ))
                     }
                 </div>
-                <button type="submit" className="mt-[40px] w-fit bg-[#082854] text-sm text-white px-8 font-medium py-2 rounded-full">Get Report</button>
-                <img src="/mpesa_logo.png" className='w-[80px] mt-3 text-center' alt="" />
+                <div className={`mt-6 flex items-center w-full transition-all duration-300 ease-in-out
+                                                justify-center gap-2 text-center ${submitting ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}>
+                    <span className='font-bold text-black'>Processing plan...</span>
+                </div>
             </form>
         </div>
     )
@@ -143,17 +172,17 @@ const PaymentOptionsForm: React.FC<PaymentOptionsFormProps> = ({ regNumber }) =>
 const faqContent = [
     {
         id: '1',
-        qst: 'How does the carVertical service work?',
-        ans: 'CARTRUST provides data about vehicles gathered from more than 900 data sources. We collect all the data we can find about a specific vehicle and compile it into one history report. We do not create the data seen in our reports – when you enter a VIN into our website, we use it to query databases belonging to various institutions, including insurance, law enforcement, and others. All of the information included in the report comes from these sources.'
+        qst: 'How does the carTrust service work?',
+        ans: 'carTrust provides data about vehicles gathered from more than 900 data sources. We collect all the data we can find about a specific vehicle and compile it into one history report. We do not create the data seen in our reports – when you enter a VIN into our website, we use it to query databases belonging to various institutions, including insurance, law enforcement, and others. All of the information included in the report comes from these sources.'
     },
     {
         id: '2',
-        qst: 'What information may appear in the carVertical report?',
+        qst: 'What information may appear in the carTrust report?',
         ans: 'We may provide the information necessary to determine the real condition of a vehicle: mileage, damage records, records from databases of stolen vehicles, and so much more.'
     },
     {
         id: '3',
         qst: 'Where does the data come from?',
-        ans: 'We gather data from various sources, including government agency registries eg NTSA, insurance companies, auto repair shops, connected vehicle fleets and many more.'
+        ans: 'We gather data from various reliable local sources.'
     }
 ]

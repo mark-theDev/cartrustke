@@ -8,15 +8,15 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding: 20px;
+    padding: 5px;
     box-shadow: 2px 2px 2px black;
 }
 
 .options {
     list-style: disc;
-    border: 2px solid rgba(130, 130, 130, 0.401);
+    border: 2px solid rgba(228, 226, 226, 0.945);
     padding: 20px;
-    border-radius: 15px;
+    border-radius: 5px;
 }
 
 .options h3 {
@@ -55,6 +55,20 @@
     height: 40px;
     animation: spin 1s linear infinite;
 }
+
+.transition-height {
+    overflow: hidden;
+    transition: height 0.3s ease;
+  }
+  
+  .expanded {
+    height: auto;
+  }
+  
+  .collapsed {
+    height: 0;
+  }
+  
 
 @keyframes spin {
     to {

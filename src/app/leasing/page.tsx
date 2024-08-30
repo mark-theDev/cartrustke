@@ -1,13 +1,20 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { FaCheck } from "react-icons/fa";
 import { IoStar } from "react-icons/io5";
 import ContactUS from '../../components/ContactUS';
 import Faq from '../../components/Faq';
+import Link from 'next/link';
 
 const page = () => {
 
     const [openIndex, setOpenIndex] = useState<null | number>(null)
+
+    const contactRef = useRef<HTMLDivElement>(null)
+
+    const moveToContacts = () => {
+        contactRef.current?.scrollIntoView({behavior: 'smooth'})
+    }
 
     const handleOpen = (index: number) => {
         setOpenIndex(prev => prev === index ? null : index)
@@ -23,8 +30,8 @@ const page = () => {
                     <div className='flex items-center gap-3'><FaCheck /><p className='text-sm font-medium'>Avoid bad loans</p></div>
                 </div>
                 <div className='flex justify-center gap-4 items-center'>
-                    <button className='px-12 text-sm group transition-all duration-300 ease-in-out font-medium py-3 bg-white text-black hover:bg-[#ffffffb1] rounded-full'>Get in touch</button>
-                    <button className='px-12 text-sm group transition-all duration-300 ease-in-out font-medium py-3 border border-white hover:bg-black hover:text-white rounded-full'>Learn more</button>
+                    <button onClick={moveToContacts} className='px-12 text-sm group transition-all duration-300 ease-in-out font-medium py-3 bg-white text-black hover:bg-[#ffffffb1] rounded-full'>Get in touch</button>
+                    <Link href={'/aboutUs'} className='px-12 text-sm group transition-all duration-300 ease-in-out font-medium py-3 border border-white hover:bg-black hover:text-white rounded-full'>Learn more</Link>
                 </div>
             </div>
             <div className='flex flex-col py-16 w-full px-7 lg:px-14'>
@@ -98,7 +105,7 @@ const page = () => {
                     <img className='absolute max-w-[300px] rounded-lg shadow-lg bottom-[-2rem] right-[20px]' src="./Mileage_Check.png" alt="" />
                 </div>
             </div>
-            <div className='w-full bg-[#eeecec] py-[60px] h-full px-7 lg:px-14'>
+            <div ref={contactRef} className='w-full bg-[#eeecec] py-[60px] h-full px-7 lg:px-14'>
                 <ContactUS />
             </div>
             <div className='flex flex-col min-h-[70vh] items-left w-full mx-auto md:w-[70vw] px-7 lg:px-14 justify-center'>

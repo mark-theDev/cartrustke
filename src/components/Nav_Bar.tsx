@@ -28,7 +28,7 @@ const navItems: NavItems[] = [
     {
         label: "Resources",        
         children: [
-            { label: "Blog" },
+            { label: "Blog", link: "/coming-soon" },
             { label: "Help" }
         ]
     },
@@ -79,20 +79,20 @@ export default function Nav_Bar1() {
                             key={i}                            
                             className={`relative group px-4 py-3 transition-all `}
                         >
-                            <p className="flex justify-center font-semibold transition-all items-center gap-2 text-black cursor-pointer 
-                                group-hover:text-[#082854]">
+                            <p className="flex justify-center font-semibold transition-all items-center gap-2
+                             text-gray-600 cursor-pointer group-hover:text-black">
                                 <span>{d.label}</span>
                                 <IoIosArrowDown className="rotate-180 transition-all group-hover:rotate-0" />
                             </p>
                             {/* sub links */}
                             {d.children &&
                                 <div
-                                    className="absolute px-2 right-[-20px] z-10 top-full py-3 hidden flex-col gap-1 w-full min-w-[200px] rounded-lg 
-                                        bg-white shadow-md transition-all border duration-300 ease-in-out group-hover:flex">
+                                    className="absolute px-1 left-0 z-10 top-full py-3 hidden flex-col gap-1 w-full min-w-[200px] rounded-lg 
+                                        bg-white shadow-md transition-all border duration-500 ease-in-out group-hover:flex opacity-50 group-hover:opacity-100">
                                     {d.children.map((child, index) =>
                                         <Link key={index} href={child.link ?? ""}
-                                            className={`flex cursor-pointer px-4 rounded-lg items-center py-2 pr-8
-                                                    text-black hover:bg-gray-300/10`}>
+                                            className={`flex cursor-pointer px-2 items-center py-2 pr-8
+                                                    text-gray-500 text-[16px] font-bold hover:text-black`}>
                                             {child.icon &&
                                                 <Image src={child.icon ?? ""} alt='reports' width={20} height={20} />}
                                             <span className="whitespace-nowrap pl-2 text-xs">{child.label}</span>

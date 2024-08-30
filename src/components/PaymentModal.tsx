@@ -11,7 +11,7 @@ import {
 export function PaymentModal() {
   
   return (
-    <div className="py-40  flex items-center justify-center">
+    <div className="h-screen bg-black/30 flex items-center justify-center">
       <Modal>        
         <ModalBody>
           <ModalContent>

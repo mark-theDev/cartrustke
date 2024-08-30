@@ -1,19 +1,19 @@
+'use client'
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 
-export const HoverEffect = ({
-  items,
-  className,
-}: {
-  items: {
-    title: string;
-    description: string;
-    link: string;
-  }[];
+interface ItemsProps {
+  id: string;
+  plan: string;
+  planDetails: [];
+  price: string;
   className?: string;
-}) => {
+  items: []
+}
+
+export const HoverEffect = ({...props}: ItemsProps) => {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
